@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3DGS Ellipse Viewer</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">3DGS Ellipse Viewer</p>
+        <h1>Per-view 2D ellipse comparisons across 9 Mip-NeRF 360 scenes.</h1>
+        <p class="hero-text">
+          Each Mip-NeRF 360 scene compares <span>COLMAP init</span> against
+          <span>trained model</span> in a fixed 3x2 layout: point clouds,
+          ellipses, and rendered images.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="legend">
+        <div class="legend-card">
+          <p class="legend-label">Columns</p>
+          <p class="legend-value">COLMAP init | Trained model</p>
+        </div>
+        <div class="legend-card">
+          <p class="legend-label">Rows</p>
+          <p class="legend-value">Point clouds | Ellipses | Rendered</p>
+        </div>
+        <div class="legend-card">
+          <p class="legend-label">Dataset</p>
+          <p class="legend-value">9 scenes from Mip-NeRF 360</p>
+        </div>
+      </section>
+
+      <section class="scene-list" id="scene-list"></section>
+    </main>
+  </div>
+
+  <template id="scene-template">
+    <article class="scene-card">
+      <div class="scene-card-header">
+        <div>
+          <p class="scene-kicker">Scene</p>
+          <h2 class="scene-title"></h2>
+        </div>
+        <p class="scene-slug"></p>
+      </div>
+
+      <div class="comparison-table">
+        <div class="table-label table-corner">View Assets</div>
+        <div class="table-label table-column">COLMAP init</div>
+        <div class="table-label table-column">Trained model</div>
+
+        <div class="table-label table-row">Point Clouds</div>
+        <figure class="viz-tile" data-kind="point_clouds" data-variant="colmap">
+          <img alt="">
+          <figcaption></figcaption>
+        </figure>
+        <figure class="viz-tile" data-kind="point_clouds" data-variant="trained">
+          <img alt="">
+          <figcaption></figcaption>
+        </figure>
+
+        <div class="table-label table-row">Ellipses</div>
+        <figure class="viz-tile" data-kind="ellipses" data-variant="colmap">
+          <img alt="">
+          <figcaption></figcaption>
+        </figure>
+        <figure class="viz-tile" data-kind="ellipses" data-variant="trained">
+          <img alt="">
+          <figcaption></figcaption>
+        </figure>
+
+        <div class="table-label table-row">Rendered</div>
+        <figure class="viz-tile" data-kind="rendered" data-variant="colmap">
+          <img alt="">
+          <figcaption></figcaption>
+        </figure>
+        <figure class="viz-tile" data-kind="rendered" data-variant="trained">
+          <img alt="">
+          <figcaption></figcaption>
+        </figure>
+      </div>
+    </article>
+  </template>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
