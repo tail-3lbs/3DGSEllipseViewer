@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3DGS Ellipse Viewer</title>
-  <link rel="stylesheet" href="assets/styles.css?v=2">
+  <link rel="stylesheet" href="assets/styles.css?v=3">
 </head>
 <body>
   <div class="page-shell">
@@ -22,7 +22,16 @@
         </p>
       </div>
       <figure class="hero-teaser">
-        <img src="images/teaser.png" alt="3DGS Ellipse Viewer teaser">
+        <picture>
+          <source srcset="images/teaser-thumb.webp" type="image/webp">
+          <img
+            src="images/teaser.png"
+            alt="3DGS Ellipse Viewer teaser"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          >
+        </picture>
       </figure>
     </header>
 
@@ -42,7 +51,385 @@
         </div>
       </section>
 
-      <section class="scene-list" id="scene-list"></section>
+      <section class="scene-list" id="scene-list">
+        <article class="scene-card" id="bicycle">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#bicycle">Bicycle</a></h2>
+            </div>
+            <p class="scene-slug">bicycle</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bicycle/colmap_point_clouds.png" data-scene-name="Bicycle" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/bicycle/colmap_point_clouds.webp" alt="bicycle COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/bicycle/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bicycle/trained_point_clouds.png" data-scene-name="Bicycle" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/bicycle/trained_point_clouds.webp" alt="bicycle Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/bicycle/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bicycle/colmap_ellipses.png" data-scene-name="Bicycle" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/bicycle/colmap_ellipses.webp" alt="bicycle COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/bicycle/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bicycle/trained_ellipses.png" data-scene-name="Bicycle" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/bicycle/trained_ellipses.webp" alt="bicycle Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/bicycle/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bicycle/colmap_rendered.png" data-scene-name="Bicycle" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/bicycle/colmap_rendered.webp" alt="bicycle COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/bicycle/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bicycle/trained_rendered.png" data-scene-name="Bicycle" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/bicycle/trained_rendered.webp" alt="bicycle Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/bicycle/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="bonsai">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#bonsai">Bonsai</a></h2>
+            </div>
+            <p class="scene-slug">bonsai</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bonsai/colmap_point_clouds.png" data-scene-name="Bonsai" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/bonsai/colmap_point_clouds.webp" alt="bonsai COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/bonsai/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bonsai/trained_point_clouds.png" data-scene-name="Bonsai" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/bonsai/trained_point_clouds.webp" alt="bonsai Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/bonsai/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bonsai/colmap_ellipses.png" data-scene-name="Bonsai" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/bonsai/colmap_ellipses.webp" alt="bonsai COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/bonsai/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bonsai/trained_ellipses.png" data-scene-name="Bonsai" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/bonsai/trained_ellipses.webp" alt="bonsai Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/bonsai/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bonsai/colmap_rendered.png" data-scene-name="Bonsai" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/bonsai/colmap_rendered.webp" alt="bonsai COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/bonsai/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/bonsai/trained_rendered.png" data-scene-name="Bonsai" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/bonsai/trained_rendered.webp" alt="bonsai Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/bonsai/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="counter">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#counter">Counter</a></h2>
+            </div>
+            <p class="scene-slug">counter</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/counter/colmap_point_clouds.png" data-scene-name="Counter" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/counter/colmap_point_clouds.webp" alt="counter COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/counter/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/counter/trained_point_clouds.png" data-scene-name="Counter" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/counter/trained_point_clouds.webp" alt="counter Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/counter/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/counter/colmap_ellipses.png" data-scene-name="Counter" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/counter/colmap_ellipses.webp" alt="counter COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/counter/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/counter/trained_ellipses.png" data-scene-name="Counter" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/counter/trained_ellipses.webp" alt="counter Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/counter/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/counter/colmap_rendered.png" data-scene-name="Counter" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/counter/colmap_rendered.webp" alt="counter COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/counter/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/counter/trained_rendered.png" data-scene-name="Counter" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/counter/trained_rendered.webp" alt="counter Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/counter/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="flowers">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#flowers">Flowers</a></h2>
+            </div>
+            <p class="scene-slug">flowers</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/flowers/colmap_point_clouds.png" data-scene-name="Flowers" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/flowers/colmap_point_clouds.webp" alt="flowers COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/flowers/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/flowers/trained_point_clouds.png" data-scene-name="Flowers" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/flowers/trained_point_clouds.webp" alt="flowers Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/flowers/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/flowers/colmap_ellipses.png" data-scene-name="Flowers" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/flowers/colmap_ellipses.webp" alt="flowers COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/flowers/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/flowers/trained_ellipses.png" data-scene-name="Flowers" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/flowers/trained_ellipses.webp" alt="flowers Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/flowers/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/flowers/colmap_rendered.png" data-scene-name="Flowers" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/flowers/colmap_rendered.webp" alt="flowers COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/flowers/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/flowers/trained_rendered.png" data-scene-name="Flowers" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/flowers/trained_rendered.webp" alt="flowers Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/flowers/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="garden">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#garden">Garden</a></h2>
+            </div>
+            <p class="scene-slug">garden</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/garden/colmap_point_clouds.png" data-scene-name="Garden" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/garden/colmap_point_clouds.webp" alt="garden COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/garden/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/garden/trained_point_clouds.png" data-scene-name="Garden" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/garden/trained_point_clouds.webp" alt="garden Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/garden/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/garden/colmap_ellipses.png" data-scene-name="Garden" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/garden/colmap_ellipses.webp" alt="garden COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/garden/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/garden/trained_ellipses.png" data-scene-name="Garden" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/garden/trained_ellipses.webp" alt="garden Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/garden/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/garden/colmap_rendered.png" data-scene-name="Garden" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/garden/colmap_rendered.webp" alt="garden COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/garden/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/garden/trained_rendered.png" data-scene-name="Garden" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/garden/trained_rendered.webp" alt="garden Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/garden/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="kitchen">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#kitchen">Kitchen</a></h2>
+            </div>
+            <p class="scene-slug">kitchen</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/kitchen/colmap_point_clouds.png" data-scene-name="Kitchen" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/kitchen/colmap_point_clouds.webp" alt="kitchen COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/kitchen/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/kitchen/trained_point_clouds.png" data-scene-name="Kitchen" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/kitchen/trained_point_clouds.webp" alt="kitchen Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/kitchen/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/kitchen/colmap_ellipses.png" data-scene-name="Kitchen" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/kitchen/colmap_ellipses.webp" alt="kitchen COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/kitchen/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/kitchen/trained_ellipses.png" data-scene-name="Kitchen" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/kitchen/trained_ellipses.webp" alt="kitchen Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/kitchen/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/kitchen/colmap_rendered.png" data-scene-name="Kitchen" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/kitchen/colmap_rendered.webp" alt="kitchen COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/kitchen/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/kitchen/trained_rendered.png" data-scene-name="Kitchen" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/kitchen/trained_rendered.webp" alt="kitchen Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/kitchen/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="room">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#room">Room</a></h2>
+            </div>
+            <p class="scene-slug">room</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/room/colmap_point_clouds.png" data-scene-name="Room" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/room/colmap_point_clouds.webp" alt="room COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/room/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/room/trained_point_clouds.png" data-scene-name="Room" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/room/trained_point_clouds.webp" alt="room Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/room/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/room/colmap_ellipses.png" data-scene-name="Room" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/room/colmap_ellipses.webp" alt="room COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/room/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/room/trained_ellipses.png" data-scene-name="Room" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/room/trained_ellipses.webp" alt="room Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/room/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/room/colmap_rendered.png" data-scene-name="Room" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/room/colmap_rendered.webp" alt="room COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/room/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/room/trained_rendered.png" data-scene-name="Room" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/room/trained_rendered.webp" alt="room Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/room/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="stump">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#stump">Stump</a></h2>
+            </div>
+            <p class="scene-slug">stump</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/stump/colmap_point_clouds.png" data-scene-name="Stump" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/stump/colmap_point_clouds.webp" alt="stump COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/stump/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/stump/trained_point_clouds.png" data-scene-name="Stump" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/stump/trained_point_clouds.webp" alt="stump Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/stump/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/stump/colmap_ellipses.png" data-scene-name="Stump" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/stump/colmap_ellipses.webp" alt="stump COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/stump/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/stump/trained_ellipses.png" data-scene-name="Stump" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/stump/trained_ellipses.webp" alt="stump Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/stump/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/stump/colmap_rendered.png" data-scene-name="Stump" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/stump/colmap_rendered.webp" alt="stump COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/stump/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/stump/trained_rendered.png" data-scene-name="Stump" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/stump/trained_rendered.webp" alt="stump Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/stump/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="scene-card" id="treehill">
+          <div class="scene-card-header">
+            <div>
+              <p class="scene-kicker">Scene</p>
+              <h2 class="scene-title"><a class="scene-title-link" href="#treehill">Treehill</a></h2>
+            </div>
+            <p class="scene-slug">treehill</p>
+          </div>
+          <div class="comparison-table">
+            <div class="table-label table-corner">View Assets</div>
+            <div class="table-label table-column">COLMAP init</div>
+            <div class="table-label table-column">Trained model</div>
+            <div class="table-label table-row">Point Clouds</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/treehill/colmap_point_clouds.png" data-scene-name="Treehill" data-row-label="Point Clouds" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/treehill/colmap_point_clouds.webp" alt="treehill COLMAP init Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Point Clouds</strong><span>assets/scenes/treehill/colmap_point_clouds.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/treehill/trained_point_clouds.png" data-scene-name="Treehill" data-row-label="Point Clouds" data-variant-label="Trained model">
+              <img src="assets/thumbs/treehill/trained_point_clouds.webp" alt="treehill Trained model Point Clouds" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Point Clouds</strong><span>assets/scenes/treehill/trained_point_clouds.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Ellipses</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/treehill/colmap_ellipses.png" data-scene-name="Treehill" data-row-label="Ellipses" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/treehill/colmap_ellipses.webp" alt="treehill COLMAP init Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Ellipses</strong><span>assets/scenes/treehill/colmap_ellipses.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/treehill/trained_ellipses.png" data-scene-name="Treehill" data-row-label="Ellipses" data-variant-label="Trained model">
+              <img src="assets/thumbs/treehill/trained_ellipses.webp" alt="treehill Trained model Ellipses" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Ellipses</strong><span>assets/scenes/treehill/trained_ellipses.png</span></figcaption>
+            </figure>
+            <div class="table-label table-row">Rendered</div>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/treehill/colmap_rendered.png" data-scene-name="Treehill" data-row-label="Rendered" data-variant-label="COLMAP init">
+              <img src="assets/thumbs/treehill/colmap_rendered.webp" alt="treehill COLMAP init Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>COLMAP init · Rendered</strong><span>assets/scenes/treehill/colmap_rendered.png</span></figcaption>
+            </figure>
+            <figure class="viz-tile has-image" data-full-src="assets/scenes/treehill/trained_rendered.png" data-scene-name="Treehill" data-row-label="Rendered" data-variant-label="Trained model">
+              <img src="assets/thumbs/treehill/trained_rendered.webp" alt="treehill Trained model Rendered" loading="lazy" decoding="async">
+              <figcaption><strong>Trained model · Rendered</strong><span>assets/scenes/treehill/trained_rendered.png</span></figcaption>
+            </figure>
+          </div>
+        </article>
+      </section>
     </main>
 
     <footer class="page-footer">
@@ -52,54 +439,6 @@
       </p>
     </footer>
   </div>
-
-  <template id="scene-template">
-    <article class="scene-card">
-      <div class="scene-card-header">
-        <div>
-          <p class="scene-kicker">Scene</p>
-          <h2 class="scene-title"><a class="scene-title-link" href=""></a></h2>
-        </div>
-        <p class="scene-slug"></p>
-      </div>
-
-      <div class="comparison-table">
-        <div class="table-label table-corner">View Assets</div>
-        <div class="table-label table-column">COLMAP init</div>
-        <div class="table-label table-column">Trained model</div>
-
-        <div class="table-label table-row">Point Clouds</div>
-        <figure class="viz-tile" data-kind="point_clouds" data-variant="colmap">
-          <img alt="">
-          <figcaption></figcaption>
-        </figure>
-        <figure class="viz-tile" data-kind="point_clouds" data-variant="trained">
-          <img alt="">
-          <figcaption></figcaption>
-        </figure>
-
-        <div class="table-label table-row">Ellipses</div>
-        <figure class="viz-tile" data-kind="ellipses" data-variant="colmap">
-          <img alt="">
-          <figcaption></figcaption>
-        </figure>
-        <figure class="viz-tile" data-kind="ellipses" data-variant="trained">
-          <img alt="">
-          <figcaption></figcaption>
-        </figure>
-
-        <div class="table-label table-row">Rendered</div>
-        <figure class="viz-tile" data-kind="rendered" data-variant="colmap">
-          <img alt="">
-          <figcaption></figcaption>
-        </figure>
-        <figure class="viz-tile" data-kind="rendered" data-variant="trained">
-          <img alt="">
-          <figcaption></figcaption>
-        </figure>
-      </div>
-    </article>
-  </template>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-backdrop" data-lightbox-close></div>
@@ -119,6 +458,6 @@
     </div>
   </div>
 
-  <script src="assets/app.js?v=3"></script>
+  <script src="assets/app.js?v=7"></script>
 </body>
 </html>

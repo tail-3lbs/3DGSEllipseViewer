@@ -1,49 +1,7 @@
-const sceneNames = [
-  "Bicycle",
-  "Bonsai",
-  "Counter",
-  "Flowers",
-  "Garden",
-  "Kitchen",
-  "Room",
-  "Stump",
-  "Treehill",
-];
-
-const rows = [
-  { key: "point_clouds", label: "Point Clouds" },
-  { key: "ellipses", label: "Ellipses" },
-  { key: "rendered", label: "Rendered" },
-];
-
-const variants = [
-  { key: "colmap", label: "COLMAP init" },
-  { key: "trained", label: "Trained model" },
-];
-
 const lightboxState = {
   items: [],
   index: 0,
 };
-
-function slugify(name) {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
-
-function expectedPath(sceneSlug, variant, kind) {
-  return `assets/scenes/${sceneSlug}/${variant}_${kind}.png`;
-}
-
-function buildCaption(variantLabel, rowLabel, path) {
-  return `
-    <strong>${variantLabel} · ${rowLabel}</strong>
-    <span>${path}</span>
-  `;
-}
-
-function buildMeta(variantLabel, rowLabel) {
-  return `${variantLabel} · ${rowLabel}`;
-}
 
 function getLightboxElements() {
   return {
@@ -56,6 +14,16 @@ function getLightboxElements() {
   };
 }
 
+function preloadImage(path) {
+  if (!path) {
+    return;
+  }
+
+  const img = new Image();
+  img.decoding = "async";
+  img.src = path;
+}
+
 function renderLightbox() {
   const els = getLightboxElements();
   const item = lightboxState.items[lightboxState.index];
@@ -63,10 +31,14 @@ function renderLightbox() {
     return;
   }
 
-  els.image.src = item.path;
+  els.image.src = item.fullPath;
   els.image.alt = `${item.sceneName} ${item.variantLabel} ${item.rowLabel}`;
   els.scene.textContent = item.sceneName;
-  els.meta.textContent = buildMeta(item.variantLabel, item.rowLabel);
+  els.meta.textContent = `${item.variantLabel} · ${item.rowLabel}`;
+
+  const count = lightboxState.items.length;
+  preloadImage(lightboxState.items[(lightboxState.index + 1) % count]?.fullPath);
+  preloadImage(lightboxState.items[(lightboxState.index - 1 + count) % count]?.fullPath);
 }
 
 function openLightbox(items, index) {
@@ -96,7 +68,7 @@ function stepLightbox(delta) {
   renderLightbox();
 }
 
-function setupLightbox() {
+function setupLightboxControls() {
   const els = getLightboxElements();
 
   els.prev.addEventListener("click", () => stepLightbox(-1));
@@ -121,77 +93,25 @@ function setupLightbox() {
   });
 }
 
-function hydrateTile(tile, sceneName, sceneSlug, row, variant) {
-  const path = expectedPath(sceneSlug, variant.key, row.key);
-  const img = tile.querySelector("img");
-  const caption = tile.querySelector("figcaption");
+function setupTiles() {
+  document.querySelectorAll(".scene-card").forEach((card) => {
+    const items = Array.from(card.querySelectorAll(".viz-tile")).map((tile) => ({
+      tile,
+      fullPath: tile.dataset.fullSrc,
+      sceneName: tile.dataset.sceneName,
+      rowLabel: tile.dataset.rowLabel,
+      variantLabel: tile.dataset.variantLabel,
+    }));
 
-  img.alt = `${sceneSlug} ${variant.label} ${row.label}`;
-  img.loading = "lazy";
-  img.decoding = "async";
-  img.src = path;
-  caption.innerHTML = buildCaption(variant.label, row.label, path);
-
-  img.addEventListener("load", () => {
-    tile.classList.add("has-image");
-  });
-
-  img.addEventListener("error", () => {
-    caption.innerHTML = `
-      <strong>${variant.label} · ${row.label}</strong>
-      <span>Placeholder active. Add image at ${path}</span>
-    `;
-  });
-
-  return {
-    tile,
-    sceneName,
-    path,
-    rowLabel: row.label,
-    variantLabel: variant.label,
-  };
-}
-
-function buildSceneCard(sceneName) {
-  const sceneSlug = slugify(sceneName);
-  const template = document.getElementById("scene-template");
-  const node = template.content.firstElementChild.cloneNode(true);
-  const lightboxItems = [];
-  const titleLink = node.querySelector(".scene-title-link");
-
-  node.id = sceneSlug;
-  titleLink.textContent = sceneName;
-  titleLink.href = `#${sceneSlug}`;
-  node.querySelector(".scene-slug").textContent = sceneSlug;
-
-  rows.forEach((row) => {
-    variants.forEach((variant) => {
-      const tile = node.querySelector(
-        `.viz-tile[data-kind="${row.key}"][data-variant="${variant.key}"]`
-      );
-      const item = hydrateTile(tile, sceneName, sceneSlug, row, variant);
-      lightboxItems.push(item);
+    items.forEach((item, index) => {
+      item.tile.addEventListener("click", () => openLightbox(items, index));
     });
   });
-
-  lightboxItems.forEach((item, index) => {
-    item.tile.addEventListener("click", () => {
-      if (!item.tile.classList.contains("has-image")) {
-        return;
-      }
-      openLightbox(lightboxItems, index);
-    });
-  });
-
-  return node;
 }
 
 function init() {
-  setupLightbox();
-  const sceneList = document.getElementById("scene-list");
-  sceneNames.forEach((sceneName) => {
-    sceneList.appendChild(buildSceneCard(sceneName));
-  });
+  setupLightboxControls();
+  setupTiles();
 }
 
 init();
