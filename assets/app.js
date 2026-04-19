@@ -127,6 +127,8 @@ function hydrateTile(tile, sceneName, sceneSlug, row, variant) {
   const caption = tile.querySelector("figcaption");
 
   img.alt = `${sceneSlug} ${variant.label} ${row.label}`;
+  img.loading = "lazy";
+  img.decoding = "async";
   img.src = path;
   caption.innerHTML = buildCaption(variant.label, row.label, path);
 
