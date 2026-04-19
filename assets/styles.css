@@ -51,7 +51,7 @@ img {
 
 .hero-copy {
   border-radius: 28px;
-  padding: 40px 42px;
+  padding: 38px 42px 34px;
 }
 
 .eyebrow,
@@ -82,14 +82,18 @@ h1,
 
 h1 {
   max-width: none;
-  font-size: clamp(2.9rem, 4.55vw, 4.95rem);
+  font-size: clamp(2.6rem, 4.1vw, 4.4rem);
   letter-spacing: -0.035em;
   margin-top: 10px;
 }
 
+.hero-title-line {
+  display: block;
+}
+
 .hero-text {
-  max-width: 64ch;
-  margin: 24px 0 0;
+  max-width: none;
+  margin: 18px 0 0;
   font-size: 1.02rem;
   line-height: 1.7;
   color: var(--muted);
@@ -98,6 +102,23 @@ h1 {
 .hero-text span {
   color: var(--ink);
   font-weight: 700;
+}
+
+.hero-teaser {
+  margin: 18px auto 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  box-shadow: 0 16px 40px rgba(55, 38, 23, 0.10);
+}
+
+.hero-teaser img {
+  width: 100%;
+  aspect-ratio: 16 / 8.8;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .legend {
@@ -246,6 +267,24 @@ h1 {
   .hero-copy,
   .scene-card {
     border-radius: 22px;
+  }
+
+  .hero-copy {
+    padding: 30px 26px 28px;
+  }
+
+  h1 {
+    max-width: none;
+    font-size: clamp(2.45rem, 10vw, 3.6rem);
+  }
+
+  .hero-text {
+    max-width: none;
+  }
+
+  .hero-teaser {
+    width: 100%;
+    margin-top: 14px;
   }
 
   .comparison-table {
