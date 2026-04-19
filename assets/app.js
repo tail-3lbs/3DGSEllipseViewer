@@ -1,13 +1,13 @@
 const sceneNames = [
-  "Scene 01",
-  "Scene 02",
-  "Scene 03",
-  "Scene 04",
-  "Scene 05",
-  "Scene 06",
-  "Scene 07",
-  "Scene 08",
-  "Scene 09",
+  "Bicycle",
+  "Bonsai",
+  "Counter",
+  "Flowers",
+  "Garden",
+  "Kitchen",
+  "Room",
+  "Stump",
+  "Treehill",
 ];
 
 const rows = [
@@ -20,6 +20,11 @@ const variants = [
   { key: "colmap", label: "COLMAP init" },
   { key: "trained", label: "Trained model" },
 ];
+
+const lightboxState = {
+  items: [],
+  index: 0,
+};
 
 function slugify(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -36,7 +41,87 @@ function buildCaption(variantLabel, rowLabel, path) {
   `;
 }
 
-async function hydrateTile(tile, sceneSlug, row, variant) {
+function buildMeta(variantLabel, rowLabel) {
+  return `${variantLabel} · ${rowLabel}`;
+}
+
+function getLightboxElements() {
+  return {
+    root: document.getElementById("lightbox"),
+    image: document.getElementById("lightbox-image"),
+    scene: document.getElementById("lightbox-scene"),
+    meta: document.getElementById("lightbox-meta"),
+    prev: document.getElementById("lightbox-prev"),
+    next: document.getElementById("lightbox-next"),
+  };
+}
+
+function renderLightbox() {
+  const els = getLightboxElements();
+  const item = lightboxState.items[lightboxState.index];
+  if (!item) {
+    return;
+  }
+
+  els.image.src = item.path;
+  els.image.alt = `${item.sceneName} ${item.variantLabel} ${item.rowLabel}`;
+  els.scene.textContent = item.sceneName;
+  els.meta.textContent = buildMeta(item.variantLabel, item.rowLabel);
+}
+
+function openLightbox(items, index) {
+  const els = getLightboxElements();
+  lightboxState.items = items;
+  lightboxState.index = index;
+  renderLightbox();
+  els.root.classList.add("is-open");
+  els.root.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  const els = getLightboxElements();
+  els.root.classList.remove("is-open");
+  els.root.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function stepLightbox(delta) {
+  const count = lightboxState.items.length;
+  if (!count) {
+    return;
+  }
+
+  lightboxState.index = (lightboxState.index + delta + count) % count;
+  renderLightbox();
+}
+
+function setupLightbox() {
+  const els = getLightboxElements();
+
+  els.prev.addEventListener("click", () => stepLightbox(-1));
+  els.next.addEventListener("click", () => stepLightbox(1));
+
+  els.root.querySelectorAll("[data-lightbox-close]").forEach((node) => {
+    node.addEventListener("click", closeLightbox);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!els.root.classList.contains("is-open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowLeft") {
+      stepLightbox(-1);
+    } else if (event.key === "ArrowRight") {
+      stepLightbox(1);
+    }
+  });
+}
+
+function hydrateTile(tile, sceneName, sceneSlug, row, variant) {
   const path = expectedPath(sceneSlug, variant.key, row.key);
   const img = tile.querySelector("img");
   const caption = tile.querySelector("figcaption");
@@ -55,14 +140,26 @@ async function hydrateTile(tile, sceneSlug, row, variant) {
       <span>Placeholder active. Add image at ${path}</span>
     `;
   });
+
+  return {
+    tile,
+    sceneName,
+    path,
+    rowLabel: row.label,
+    variantLabel: variant.label,
+  };
 }
 
 function buildSceneCard(sceneName) {
   const sceneSlug = slugify(sceneName);
   const template = document.getElementById("scene-template");
   const node = template.content.firstElementChild.cloneNode(true);
+  const lightboxItems = [];
+  const titleLink = node.querySelector(".scene-title-link");
 
-  node.querySelector(".scene-title").textContent = sceneName;
+  node.id = sceneSlug;
+  titleLink.textContent = sceneName;
+  titleLink.href = `#${sceneSlug}`;
   node.querySelector(".scene-slug").textContent = sceneSlug;
 
   rows.forEach((row) => {
@@ -70,7 +167,17 @@ function buildSceneCard(sceneName) {
       const tile = node.querySelector(
         `.viz-tile[data-kind="${row.key}"][data-variant="${variant.key}"]`
       );
-      hydrateTile(tile, sceneSlug, row, variant);
+      const item = hydrateTile(tile, sceneName, sceneSlug, row, variant);
+      lightboxItems.push(item);
+    });
+  });
+
+  lightboxItems.forEach((item, index) => {
+    item.tile.addEventListener("click", () => {
+      if (!item.tile.classList.contains("has-image")) {
+        return;
+      }
+      openLightbox(lightboxItems, index);
     });
   });
 
@@ -78,6 +185,7 @@ function buildSceneCard(sceneName) {
 }
 
 function init() {
+  setupLightbox();
   const sceneList = document.getElementById("scene-list");
   sceneNames.forEach((sceneName) => {
     sceneList.appendChild(buildSceneCard(sceneName));

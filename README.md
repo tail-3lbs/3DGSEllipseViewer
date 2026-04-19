@@ -8,42 +8,64 @@ Visit the live page here:
 
 https://tail-3lbs.github.io/3DGSEllipseViewer/
 
-## Layout
+## What the page shows
 
 Each scene renders a 3x2 comparison grid:
 
-- columns: `colmap init`, `trained model`
-- rows: `point clouds`, `ellipses`, `rendered`
+- columns: `COLMAP init`, `Trained model`
+- rows: `Point Clouds`, `Ellipses`, `Rendered`
 
-That means each scene expects 6 images.
-
-## Image convention
-
-The page is already wired to look for images at:
+Each scene therefore uses 6 images:
 
 ```text
-assets/scenes/<scene-slug>/colmap_point_clouds.png
-assets/scenes/<scene-slug>/trained_point_clouds.png
-assets/scenes/<scene-slug>/colmap_ellipses.png
-assets/scenes/<scene-slug>/trained_ellipses.png
-assets/scenes/<scene-slug>/colmap_rendered.png
-assets/scenes/<scene-slug>/trained_rendered.png
+colmap_point_clouds.png
+trained_point_clouds.png
+colmap_ellipses.png
+trained_ellipses.png
+colmap_rendered.png
+trained_rendered.png
 ```
 
-Current scene slugs are generated from the names in `assets/app.js`:
+## Included scenes
 
-- `scene-01`
-- `scene-02`
-- `scene-03`
-- `scene-04`
-- `scene-05`
-- `scene-06`
-- `scene-07`
-- `scene-08`
-- `scene-09`
+The current site is populated with these 9 Mip-NeRF 360 scenes:
 
-## Next edits
+- `bicycle`
+- `bonsai`
+- `counter`
+- `flowers`
+- `garden`
+- `kitchen`
+- `room`
+- `stump`
+- `treehill`
 
-- Replace the generic scene names in `assets/app.js` with your real 9 scene names.
-- Drop images into `assets/scenes/<scene-slug>/`.
-- Open `index.html` in a browser, or serve the folder with any static file server.
+## Interaction
+
+- clicking a scene image opens an in-page lightbox
+- left/right arrow keys navigate through the 6 images for that scene
+- `Esc` closes the lightbox
+- clicking a scene name updates the page hash and scrolls to that panel
+
+## Repo contents
+
+- `index.html`: page structure and lightbox container
+- `assets/styles.css`: page styling and responsive layout
+- `assets/app.js`: scene rendering, self-links, and lightbox behavior
+- `assets/scenes/`: scene images used by the page
+- `images/teaser.png`: top teaser image
+
+## Local testing
+
+Serve the folder with a local static server from the repo root:
+
+```bash
+cd /home/jiaqi/workspace/3dgs-ellipse-viewer
+python3 -m http.server 8000
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000
+```
