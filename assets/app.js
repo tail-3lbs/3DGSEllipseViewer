@@ -1,6 +1,7 @@
 const lightboxState = {
   items: [],
   index: 0,
+  requestId: 0,
 };
 
 function getLightboxElements() {
@@ -31,10 +32,37 @@ function renderLightbox() {
     return;
   }
 
-  els.image.src = item.fullPath;
   els.image.alt = `${item.sceneName} ${item.variantLabel} ${item.rowLabel}`;
   els.scene.textContent = item.sceneName;
   els.meta.textContent = `${item.variantLabel} · ${item.rowLabel}`;
+  els.root.classList.add("is-loading");
+
+  const requestId = ++lightboxState.requestId;
+
+  if (item.thumbPath) {
+    els.image.src = item.thumbPath;
+  } else {
+    els.image.removeAttribute("src");
+  }
+
+  const fullImage = new Image();
+  fullImage.decoding = "async";
+  fullImage.onload = () => {
+    if (requestId !== lightboxState.requestId) {
+      return;
+    }
+
+    els.image.src = item.fullPath;
+    els.root.classList.remove("is-loading");
+  };
+  fullImage.onerror = () => {
+    if (requestId !== lightboxState.requestId) {
+      return;
+    }
+
+    els.root.classList.remove("is-loading");
+  };
+  fullImage.src = item.fullPath;
 
   const count = lightboxState.items.length;
   preloadImage(lightboxState.items[(lightboxState.index + 1) % count]?.fullPath);
@@ -53,7 +81,9 @@ function openLightbox(items, index) {
 
 function closeLightbox() {
   const els = getLightboxElements();
+  lightboxState.requestId += 1;
   els.root.classList.remove("is-open");
+  els.root.classList.remove("is-loading");
   els.root.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
@@ -98,6 +128,7 @@ function setupTiles() {
     const items = Array.from(card.querySelectorAll(".viz-tile")).map((tile) => ({
       tile,
       fullPath: tile.dataset.fullSrc,
+      thumbPath: tile.querySelector("img")?.getAttribute("src") || "",
       sceneName: tile.dataset.sceneName,
       rowLabel: tile.dataset.rowLabel,
       variantLabel: tile.dataset.variantLabel,
